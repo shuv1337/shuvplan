@@ -1,4 +1,26 @@
 [install]
 linker = "isolated"
 minimumReleaseAge = 604800  # 7 days in seconds
-minimumReleaseAgeExcludes = ["@pierre/diffs"]
+minimumReleaseAgeExcludes = [
+  "@pierre/diffs",
+  "@aws-sdk/client-bedrock-runtime",
+  "@aws-sdk/core",
+  "@aws-sdk/credential-provider-env",
+  "@aws-sdk/credential-provider-http",
+  "@aws-sdk/credential-provider-ini",
+  "@aws-sdk/credential-provider-login",
+  "@aws-sdk/credential-provider-node",
+  "@aws-sdk/credential-provider-process",
+  "@aws-sdk/credential-provider-sso",
+  "@aws-sdk/credential-provider-web-identity",
+  "@aws-sdk/eventstream-handler-node",
+  "@aws-sdk/middleware-eventstream",
+  "@aws-sdk/middleware-websocket",
+  "@aws-sdk/nested-clients",
+  "@aws-sdk/signature-v4-multi-region",
+  "@aws-sdk/token-providers",
+  "@aws-sdk/types",
+  "@aws-sdk/util-locate-window",
+  "@aws-sdk/xml-builder",
+  "@pierre/theme",
+]

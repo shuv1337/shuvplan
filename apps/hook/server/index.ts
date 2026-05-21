@@ -262,6 +262,7 @@ const pasteApiUrl = process.env.PLANNOTATOR_PASTE_URL || undefined;
 //   > Copilot CLI (COPILOT_CLI)
 //   > OpenCode (OPENCODE)
 //   > Gemini CLI (GEMINI_CLI)
+//   > Pi (PI_CODING_AGENT) — set when a Pi extension shells out to the CLI
 //   > Claude Code (default fallback)
 //
 // To add a new agent, also add an entry to AGENT_CONFIG in
@@ -273,6 +274,7 @@ const detectedOrigin: Origin =
   process.env.COPILOT_CLI ? "copilot-cli" :
   process.env.OPENCODE ? "opencode" :
   process.env.GEMINI_CLI ? "gemini-cli" :
+  process.env.PI_CODING_AGENT ? "pi" :
   "claude-code";
 
 if (args[0] === "sessions") {

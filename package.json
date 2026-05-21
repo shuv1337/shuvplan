@@ -16,7 +16,14 @@
   "bugs": {
     "url": "https://github.com/backnotprop/plannotator/issues"
   },
-  "workspaces": ["apps/*", "packages/*"],
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "../pi-mono/packages/agent",
+    "../pi-mono/packages/ai",
+    "../pi-mono/packages/coding-agent",
+    "../pi-mono/packages/tui"
+  ],
   "scripts": {
     "dev:hook": "bun run --cwd apps/hook dev",
     "dev:portal": "bun run --cwd apps/portal dev",
@@ -49,6 +56,7 @@
   "devDependencies": {
     "@types/node": "^25.5.2",
     "@types/turndown": "^5.0.6",
-    "bun-types": "^1.3.11"
+    "bun-types": "^1.3.11",
+    "typescript": "~5.8.2"
   }
 }
