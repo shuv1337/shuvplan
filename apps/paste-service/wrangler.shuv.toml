@@ -1,0 +1,16 @@
+name = "paste-shuv-dev"
+main = "targets/cloudflare.ts"
+compatibility_date = "2024-12-01"
+
+[[kv_namespaces]]
+binding = "PASTE_KV"
+id = "bdbb1d2988654d3c930ed41e90319cb9"
+preview_id = "32bedb07c13d45528bc20b6dd799b7fc"
+
+[vars]
+ALLOWED_ORIGINS = "https://plan.shuv.dev,http://localhost:3001"
+
+# Custom domain route
+routes = [
+  { pattern = "paste.shuv.dev/*", zone_name = "shuv.dev" }
+]
