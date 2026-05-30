@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light only">
+  <title>Latitudes Gateway — UI Kit</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Self-hosted webfonts (variable TTFs). Comment this out + uncomment the
+       Google Fonts <link> below if you'd rather use the CDN. -->
+  <style>
+    @font-face{font-family:"Montserrat";src:url("../../fonts/Montserrat-VF.ttf") format("truetype-variations"),url("../../fonts/Montserrat-VF.ttf") format("truetype");font-weight:100 900;font-style:normal;font-display:swap;}
+    @font-face{font-family:"Manrope";src:url("../../fonts/Manrope-VF.ttf") format("truetype-variations"),url("../../fonts/Manrope-VF.ttf") format("truetype");font-weight:200 800;font-style:normal;font-display:swap;}
+    @font-face{font-family:"Lora";src:url("../../fonts/Lora-VF.ttf") format("truetype-variations"),url("../../fonts/Lora-VF.ttf") format("truetype");font-weight:400 700;font-style:normal;font-display:swap;}
+    @font-face{font-family:"Lora";src:url("../../fonts/Lora-Italic-VF.ttf") format("truetype-variations"),url("../../fonts/Lora-Italic-VF.ttf") format("truetype");font-weight:400 700;font-style:italic;font-display:swap;}
+    @font-face{font-family:"Geist Mono";src:url("../../fonts/GeistMono-VF.ttf") format("truetype-variations"),url("../../fonts/GeistMono-VF.ttf") format("truetype");font-weight:100 900;font-style:normal;font-display:swap;}
+  </style>
+  <!-- <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Manrope:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet"> -->
+
+  <link rel="stylesheet" href="hifi.css">
+
+  <style>
+    html,body{height:100%;margin:0;background:#f0eee9;color-scheme:light;}
+    body{font-family:"Manrope", ui-sans-serif, system-ui, sans-serif;color:#0e1726;}
+    #root{height:100%;display:flex;flex-direction:column;}
+
+    /* Switcher chrome — small, lives above the canvas */
+    .kit-switcher{
+      flex: 0 0 auto;
+      display:flex; align-items:center; gap:10px;
+      padding: 10px 16px;
+      background:#0e1726;
+      color:#fff;
+      border-bottom: 2px solid #f5a623;
+      font-family: "Montserrat", system-ui;
+      font-size: 11px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .kit-switcher .label{ color:#f5a623; font-weight:700; margin-right:4px; }
+    .kit-switcher button{
+      font:600 11px/1 "Montserrat", system-ui;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      background: transparent;
+      color: rgba(255,255,255,.65);
+      border: 1px solid rgba(255,255,255,.14);
+      padding: 6px 11px;
+      border-radius: 4px;
+      cursor:pointer;
+    }
+    .kit-switcher button:hover{ color:#fff; border-color: rgba(255,255,255,.35); }
+    .kit-switcher button.on{
+      background: #f5a623;
+      color: #0e1726;
+      border-color: #f5a623;
+    }
+    .kit-stage{ flex:1; min-height:0; display:flex; }
+    .kit-stage > *{ flex:1; min-width:0; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script type="text/babel" src="hifi-primitives.jsx"></script>
+  <script type="text/babel" src="hifi-screens.jsx"></script>
+  <script type="text/babel" src="hifi-reporting.jsx"></script>
+  <script type="text/babel" src="hifi-permissions.jsx"></script>
+  <script type="text/babel" src="hifi-perms-2.jsx"></script>
+  <script type="text/babel" src="hifi-teams.jsx"></script>
+  <script type="text/babel" src="hifi-teams-2.jsx"></script>
+
+  <script type="text/babel">
+    /* global React, ReactDOM,
+       HDashboard, HConnectionsGallery, HConnectionsList, HConnectionDetail,
+       HReportingGrid, HReportingNarrative,
+       HPermissionsMatrix, HPermissionsInspector,
+       HPermissionsPolicy, HPermissionsRole,
+       HTeamsTable, HTeamsCards, HTeamDetail, HUserDetail */
+    const {useState} = React;
+
+    const SCREENS = [
+      {id:'home',         label:'Home',          C: typeof HDashboard         !== 'undefined' && HDashboard},
+      {id:'connections',  label:'Connections',   C: typeof HConnectionsGallery!== 'undefined' && HConnectionsGallery},
+      {id:'conn-list',    label:'Conn · List',   C: typeof HConnectionsList   !== 'undefined' && HConnectionsList},
+      {id:'conn-detail',  label:'Conn · Detail', C: typeof HConnectionDetail  !== 'undefined' && HConnectionDetail},
+      {id:'report',       label:'Reporting',     C: typeof HReportingGrid     !== 'undefined' && HReportingGrid},
+      {id:'narrative',    label:'Weekly report', C: typeof HReportingNarrative!== 'undefined' && HReportingNarrative},
+      {id:'perms',        label:'Permissions',   C: typeof HPermissionsMatrix !== 'undefined' && HPermissionsMatrix},
+      {id:'perms-insp',   label:'By caller',     C: typeof HPermissionsInspector!=='undefined' && HPermissionsInspector},
+      {id:'policy',       label:'Policy',        C: typeof HPermissionsPolicy !== 'undefined' && HPermissionsPolicy},
+      {id:'role',         label:'Role · Eng',    C: typeof HPermissionsRole   !== 'undefined' && HPermissionsRole},
+      {id:'team-tbl',     label:'Members',       C: typeof HTeamsTable        !== 'undefined' && HTeamsTable},
+      {id:'team-cards',   label:'Teams',         C: typeof HTeamsCards        !== 'undefined' && HTeamsCards},
+      {id:'team',         label:'Team · Eng',    C: typeof HTeamDetail        !== 'undefined' && HTeamDetail},
+      {id:'user',         label:'User',          C: typeof HUserDetail        !== 'undefined' && HUserDetail},
+    ];
+
+    function App(){
+      const [active, setActive] = useState('home');
+      const cur = SCREENS.find(s => s.id === active) || SCREENS[0];
+      const C = cur.C;
+      return (
+        <>
+          <div className="kit-switcher" data-screen-label="UI Kit Switcher">
+            <span className="label">Screens</span>
+            {SCREENS.map(s => (
+              <button key={s.id} className={active===s.id?'on':''} onClick={()=>setActive(s.id)}>{s.label}</button>
+            ))}
+          </div>
+          <div className="kit-stage" data-screen-label={cur.label}>
+            {C ? <C density="regular" nav="rail"/> : <div style={{padding:40, color:'#6c7385'}}>Screen <strong>{cur.label}</strong> is not yet wired in this build.</div>}
+          </div>
+        </>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+  </script>
+</body>
+</html>

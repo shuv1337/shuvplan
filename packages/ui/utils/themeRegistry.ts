@@ -27,10 +27,10 @@ export const BUILT_IN_THEMES: ThemeInfo[] = [
     syntaxHighlighting: true,
     colors: {
       dark: {
-        primary: '#f3b042',
-        secondary: '#0b253a',
-        accent: '#7fdbca',
-        background: '#011627',
+        primary: '#f5a623',
+        secondary: '#1e3a5f',
+        accent: '#f5a623',
+        background: '#0e1726',
         foreground: '#d6deeb',
       },
       light: {

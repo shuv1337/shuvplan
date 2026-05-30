@@ -1,0 +1,25 @@
+<svg width="348" height="392" viewBox="0 0 348 392" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Latitudes stepped bar mark - soft taper</title>
+  <desc id="desc">A stepped stack of evenly spaced horizontal bars with a subtle taper toward the top.</desc>
+  <rect width="348" height="392" fill="#fbfbfa"></rect>
+  <g shape-rendering="geometricPrecision">
+    <rect x="135" y="38" width="64" height="10" fill="#1e3a5f"></rect>
+    <rect x="135" y="56" width="64" height="10" fill="#62b7d4"></rect>
+    <rect x="134" y="74" width="66" height="10" fill="#1e3a5f"></rect>
+    <rect x="134" y="92" width="66" height="10" fill="#62b7d4"></rect>
+    <rect x="133" y="110" width="68" height="10" fill="#1e3a5f"></rect>
+    <rect x="133" y="128" width="68" height="10" fill="#62b7d4"></rect>
+    <rect x="137" y="146" width="70" height="10" fill="#1e3a5f"></rect>
+    <rect x="127" y="164" width="70" height="10" fill="#62b7d4"></rect>
+    <rect x="143" y="182" width="72" height="10" fill="#1e3a5f"></rect>
+    <rect x="121" y="200" width="72" height="10" fill="#62b7d4"></rect>
+    <rect x="153" y="218" width="74" height="10" fill="#1e3a5f"></rect>
+    <rect x="110" y="236" width="74" height="10" fill="#62b7d4"></rect>
+    <rect x="170" y="254" width="76" height="10" fill="#1e3a5f"></rect>
+    <rect x="96" y="272" width="76" height="10" fill="#62b7d4"></rect>
+    <rect x="196" y="290" width="76" height="10" fill="#1e3a5f"></rect>
+    <rect x="71" y="308" width="76" height="10" fill="#f5a623"></rect>
+    <rect x="234" y="326" width="76" height="10" fill="#1e3a5f"></rect>
+    <rect x="38" y="344" width="76" height="10" fill="#62b7d4"></rect>
+  </g>
+</svg>

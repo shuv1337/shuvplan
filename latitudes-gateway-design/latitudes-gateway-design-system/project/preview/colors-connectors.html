@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="color-scheme" content="light only">
+<title>Connector palette</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  .sw{
+    width:46px; height:46px; border-radius:8px;
+    display:flex; align-items:center; justify-content:center;
+    color:#fff; font:800 14px/1 "Montserrat", system-ui;
+    letter-spacing:-.02em; text-transform:uppercase;
+    position:relative; overflow:hidden;
+    box-shadow: var(--shadow-sm);
+  }
+  .sw::before{
+    content:""; position:absolute; inset:0;
+    background: radial-gradient(120% 80% at 30% 0%, rgba(255,255,255,.28), transparent 60%);
+  }
+  .sw img{ position:relative; z-index:1; }
+  .item{ display:flex; flex-direction:column; gap:6px; align-items:flex-start; }
+  .item .nm{ font:600 11px/1.2 var(--font-ui); color:var(--ink-2); }
+  .item .mo{ font:500 10px/1.2 var(--font-mono); color:var(--muted); }
+</style>
+</head><body><div class="card">
+
+<div class="grid" style="grid-template-columns:repeat(6,1fr); gap:18px">
+  <div class="item"><div class="sw" style="background:oklch(0.52 0.16 280)"><img src="https://cdn.simpleicons.org/linear/FFFFFF" width="26" height="26" alt=""></div><div class="nm">Linear</div><div class="mo">Ln · lines</div></div>
+  <div class="item"><div class="sw" style="background:oklch(0.55 0.14 250)"><img src="https://cdn.simpleicons.org/stripe/FFFFFF" width="26" height="26" alt=""></div><div class="nm">Stripe API</div><div class="mo">St · grid</div></div>
+  <div class="item"><div class="sw" style="background:oklch(0.42 0.10 235)"><img src="https://cdn.simpleicons.org/postgresql/FFFFFF" width="26" height="26" alt=""></div><div class="nm">Postgres·prod</div><div class="mo">Pg · wave</div></div>
+  <div class="item"><div class="sw" style="background:#4A154B"><svg width="24" height="24" viewBox="0 0 24 24" fill="#fff" style="position:relative;z-index:1" aria-hidden="true">
+    <path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zM18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312zM15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z"/>
+  </svg></div><div class="nm">Slack</div><div class="mo">Sl · dots</div></div>
+  <div class="item"><div class="sw" style="background:oklch(0.28 0.02 250)"><img src="https://cdn.simpleicons.org/github/FFFFFF" width="26" height="26" alt=""></div><div class="nm">GitHub GraphQL</div><div class="mo">Gh · rings</div></div>
+  <div class="item"><div class="sw" style="background:oklch(0.46 0.16 320)"><img src="https://cdn.simpleicons.org/sentry/FFFFFF" width="26" height="26" alt=""></div><div class="nm">Sentry</div><div class="mo">Se · diag</div></div>
+
+  <div class="item"><div class="sw" style="background:oklch(0.32 0.02 60)"><img src="https://cdn.simpleicons.org/notion/FFFFFF" width="26" height="26" alt=""></div><div class="nm">Notion</div><div class="mo">Nt · lines</div></div>
+  <div class="item"><div class="sw" style="background:oklch(0.50 0.14 260)"><img src="https://cdn.simpleicons.org/googlebigquery/FFFFFF" width="26" height="26" alt=""></div><div class="nm">BigQuery</div><div class="mo">Bq · grid</div></div>
+  <div class="item"><div class="sw" style="background:oklch(0.66 0.10 220)"><img src="https://cdn.simpleicons.org/snowflake/FFFFFF" width="26" height="26" alt=""></div><div class="nm">Snowflake</div><div class="mo">Sn · dots</div></div>
+  <div class="item"><div class="sw" style="background:oklch(0.40 0.10 155)"><img src="https://cdn.simpleicons.org/zendesk/FFFFFF" width="26" height="26" alt=""></div><div class="nm">Zendesk</div><div class="mo">Zd · rings</div></div>
+  <div class="item"><div class="sw" style="background:oklch(0.62 0.14 45)"><img src="https://cdn.simpleicons.org/hubspot/FFFFFF" width="26" height="26" alt=""></div><div class="nm">HubSpot</div><div class="mo">Hs · wave</div></div>
+  <div class="item"><div class="sw" style="background:oklch(0.50 0.16 215)"><img src="https://cdn.simpleicons.org/intercom/FFFFFF" width="26" height="26" alt=""></div><div class="nm">Intercom</div><div class="mo">Ic · dots</div></div>
+</div>
+
+<div class="row" style="margin-top:auto">
+  <span style="font:italic 400 13px/1.4 var(--font-serif); color:var(--ink-3)">Per-source palette — each connector has a stable color, 2-letter mono fallback, and overlay pattern.</span>
+</div>
+
+</div></body></html>

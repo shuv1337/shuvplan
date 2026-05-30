@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="color-scheme" content="light only">
+<title>Buttons</title>
+<link rel="stylesheet" href="../fonts/fonts.css">
+<link rel="stylesheet" href="../ui_kits/gateway/hifi.css">
+<style>
+  html,body{margin:0;background:#faf9f6;color-scheme:light;font:13.5px/1.5 "Manrope",system-ui;color:#0e1726;}
+  .card{ padding:24px 26px; display:flex; flex-direction:column; gap:16px; min-height:100%; box-sizing:border-box;}
+  .row{ display:flex; align-items:center; gap:10px; flex-wrap:wrap;}
+  .lbl{ font:700 9.5px/1 "Montserrat",system-ui; letter-spacing:.14em; text-transform:uppercase; color:#6c7385; min-width:78px;}
+</style>
+</head><body><div class="card">
+
+<div class="row"><span class="lbl">Primary</span>
+  <button class="h-btn primary">+ Add source</button>
+  <button class="h-btn">Audit log</button>
+  <button class="h-btn gold">Save changes</button>
+  <button class="h-btn ghost">Cancel</button>
+</div>
+
+<div class="row"><span class="lbl">Small</span>
+  <button class="h-btn primary sm">Confirm</button>
+  <button class="h-btn sm">Edit</button>
+  <button class="h-btn gold sm">Save</button>
+  <button class="h-btn ghost sm">Discard</button>
+</div>
+
+<div class="row"><span class="lbl">Text link</span>
+  <button class="h-btn text-only ghost" style="color:#1e3a5f">View all 14 →</button>
+  <button class="h-btn text-only ghost" style="color:#f5a623">+ add filter</button>
+  <button class="h-btn text-only ghost" style="color:#c84a36">Revoke</button>
+</div>
+
+<div style="margin-top:auto;font:italic 400 13px/1.4 'Lora',serif;color:#4a5468">Buttons are Montserrat 700 11px uppercase. Gold = commit (Save changes). Primary navy = main page actions. Ghost = secondary or destructive (paired with bad ink).</div>
+
+</div></body></html>

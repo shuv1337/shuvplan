@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>shuvplan Rebrand Implementation Notes</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #faf9f6;
+      --card: #ffffff;
+      --ink: #0e1726;
+      --muted: #6c7385;
+      --line: #e6e2d6;
+      --navy: #1e3a5f;
+      --gold: #f5a623;
+    }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Manrope, Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.55;
+    }
+    main {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+    h1, h2 {
+      font-family: Montserrat, Manrope, system-ui, sans-serif;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: 28px;
+      font-weight: 600;
+    }
+    h2 {
+      margin-top: 32px;
+      font-size: 14px;
+      color: var(--navy);
+    }
+    .eyebrow {
+      margin: 0 0 18px;
+      color: var(--gold);
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      font-size: 12px;
+    }
+    section {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 18px;
+      margin-top: 18px;
+      box-shadow: 0 8px 24px rgba(14, 23, 38, .06);
+    }
+    ul { padding-left: 22px; }
+    code {
+      font-family: "Geist Mono", "SFMono-Regular", Consolas, monospace;
+      background: #f1eee6;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 1px 4px;
+      font-size: .92em;
+    }
+    .status {
+      display: inline-block;
+      border-left: 4px solid var(--gold);
+      background: #fff2d6;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-weight: 700;
+    }
+    .muted { color: var(--muted); }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="eyebrow">Phase 0 implementation notes</p>
+    <h1>shuvplan Rebrand</h1>
+    <p class="muted">Generated while executing <code>.hermes/plans/2026-05-26_173426-latitudes-rebrand-reskin-rename.md</code>.</p>
+
+    <section>
+      <h2>Status</h2>
+      <p class="status">Blocked before Phase 1 by the plan's hard decision gate.</p>
+      <p>The plan explicitly says phases 1-5 must not start until the remaining Phase 0 decisions are answered. I completed the live repo-state check, created the implementation branch, and gathered the required inventory. Product-facing rename/reskin edits are intentionally not started yet.</p>
+    </section>
+
+    <section>
+      <h2>Repo State</h2>
+      <ul>
+        <li>Branch created: <code>codex/latitudes-rebrand</code>.</li>
+        <li>Base branch before switch: <code>main...origin/main</code> at <code>011234ee</code>.</li>
+        <li>Pre-existing dirty files were preserved and not reverted.</li>
+        <li>The plan path is <code>.hermes/plans/2026-05-26_173426-latitudes-rebrand-reskin-rename.md</code>; the originally requested <code>.mdb</code> file was not present.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Inventory Findings</h2>
+      <ul>
+        <li><code>401</code> files matched Plannotator identity/config/domain terms in the scoped inventory.</li>
+        <li><code>24</code> distinct <code>PLANNOTATOR_*</code> env-var names were found.</li>
+        <li><code>283</code> matches touched <code>~/.plannotator</code> or equivalent hardcoded data-path references.</li>
+        <li><code>414</code> release/install/workflow references matched command, binary, or artifact names.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Open Decisions Required</h2>
+      <ul>
+        <li>Product name is now locked as <code>shuvplan</code>.</li>
+        <li>Internal-only fork vs public npm/marketplace publishing.</li>
+        <li>Whether the old <code>plannotator</code> command remains permanently or gets a removal schedule.</li>
+        <li>Target marketing, share, paste, and waitlist domains.</li>
+        <li>Automatic vs explicit migration from <code>~/.plannotator</code>.</li>
+        <li>Default first-launch mode: system, light, or dark.</li>
+        <li>Whether the mascot is fully removed or only removed from primary chrome.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Recommended Sign-Off Defaults</h2>
+      <ul>
+        <li>Product: <code>shuvplan</code>.</li>
+        <li>CLI: add <code>shuvplan</code>, keep <code>plannotator</code> as a compatibility alias for at least one release train.</li>
+        <li>Scope: internal-first unless publishing details are confirmed.</li>
+        <li>Data: read legacy <code>~/.plannotator</code>, write new data only after migration helpers and tests land.</li>
+        <li>Theme: ship warm light mode from the design bundle plus Night Owl-inspired dark mode from <code>~/.config/helium-theme-night-owl</code>; the requested <code>~/.config/helium-night-owl-theme</code> path was not present.</li>
+        <li>Mascot: remove from primary chrome, retain code only if unused or explicitly kept outside core product surfaces.</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>

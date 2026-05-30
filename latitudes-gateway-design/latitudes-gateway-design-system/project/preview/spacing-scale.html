@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="color-scheme" content="light only">
+<title>Spacing scale</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  .stick{
+    background:#1e3a5f;
+    height:18px;
+    border-radius:2px;
+    flex:0 0 auto;
+  }
+  .row.scale > .col{ align-items:flex-start; gap:6px; }
+  .row.scale .token{ font-size:10.5px; }
+</style>
+</head><body><div class="card">
+
+<div class="row scale" style="gap:14px; align-items:flex-end">
+  <div class="col"><div class="stick" style="width:4px"></div><div class="token"><span class="hex">4</span></div></div>
+  <div class="col"><div class="stick" style="width:6px"></div><div class="token"><span class="hex">6</span></div></div>
+  <div class="col"><div class="stick" style="width:8px"></div><div class="token"><span class="hex">8</span></div></div>
+  <div class="col"><div class="stick" style="width:10px"></div><div class="token"><span class="hex">10</span></div></div>
+  <div class="col"><div class="stick" style="width:12px"></div><div class="token"><span class="hex">12</span></div></div>
+  <div class="col"><div class="stick" style="width:14px"></div><div class="token"><span class="hex">14</span></div></div>
+  <div class="col"><div class="stick" style="width:16px"></div><div class="token"><span class="hex">16</span></div></div>
+  <div class="col"><div class="stick" style="width:18px"></div><div class="token"><span class="hex">18</span></div></div>
+  <div class="col"><div class="stick" style="width:22px"></div><div class="token"><span class="hex">22</span></div></div>
+  <div class="col"><div class="stick" style="width:24px"></div><div class="token"><span class="hex">24</span></div></div>
+  <div class="col"><div class="stick" style="width:30px"></div><div class="token"><span class="hex">30</span></div></div>
+  <div class="col"><div class="stick" style="width:36px"></div><div class="token"><span class="hex">36</span></div></div>
+</div>
+
+<div class="col" style="gap:8px; margin-top:6px">
+  <div class="row" style="gap:18px">
+    <span class="label">Card padding</span>
+    <span class="mono">18px · 13 compact · 22 comfy</span>
+  </div>
+  <div class="row" style="gap:18px">
+    <span class="label">Page body</span>
+    <span class="mono">22px / 30px</span>
+  </div>
+  <div class="row" style="gap:18px">
+    <span class="label">Rail</span>
+    <span class="mono">220px · 190 compact · 264 wide</span>
+  </div>
+</div>
+
+<div class="row" style="margin-top:auto">
+  <span style="font:italic 400 13px/1.4 var(--font-serif); color:var(--ink-3)">No formal 4 or 8 grid — gaps tuned per density. Page body sets the outer rhythm.</span>
+</div>
+
+</div></body></html>

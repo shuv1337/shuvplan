@@ -1,0 +1,202 @@
+/* ─────────────────────────────────────────────────────────────────────
+ * Latitudes Gateway — colors & type
+ *
+ * Foundation tokens for the Latitudes Gateway admin product.
+ * Source of truth: ui_kits/gateway/hifi.css (component-bearing stylesheet).
+ * Import this file from any artifact that needs to look like Gateway.
+ *
+ *   <link rel="stylesheet" href="colors_and_type.css">
+ *
+ * Vibe: refined, governed-by-design, closer to Linear/Stripe than to a
+ * config dashboard. Navy primary + amber/gold accent over a warm
+ * paper-cream page background.
+ * ───────────────────────────────────────────────────────────────────── */
+
+/* Webfonts — self-hosted variable TTFs in ../fonts/.
+   If you need CDN instead, swap this @import for the Google Fonts URL:
+   @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Manrope:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Geist+Mono:wght@400;500;600&display=swap"); */
+@import url("./fonts/fonts.css");
+
+:root{
+  /* ─── Surfaces (warm paper-cream stack) ─────────────────────────── */
+  --bg:          #faf9f6;   /* page background */
+  --bg-2:        #f1eee6;   /* secondary fill, hover, sunken inputs  */
+  --bg-3:        #e6e2d6;   /* tertiary, separator-on-bg            */
+  --surface:     #ffffff;   /* cards, tables, dropdowns              */
+  --surface-2:   #fbfaf6;   /* page header strip, nav background     */
+
+  /* ─── Ink (cool-navy text stack, NEVER pure black) ──────────────── */
+  --ink:         #0e1726;   /* primary text on light surfaces        */
+  --ink-2:       #2a3447;   /* body / subheads                       */
+  --ink-3:       #4a5468;   /* tertiary copy, captions               */
+  --muted:       #6c7385;   /* labels, meta                          */
+  --muted-2:     #a4abbc;   /* hint text, disabled, chevrons         */
+  --line:        #e6e3d6;   /* default border on warm surfaces       */
+  --line-2:      #eeece1;   /* table dividers, hairlines             */
+  --line-strong: #cfcaba;   /* input borders, segmented controls     */
+
+  /* ─── Brand (navy + gold; never used together as gradient) ──────── */
+  --brand:       #1e3a5f;   /* deep navy primary                     */
+  --brand-2:     #2a4d7a;   /* navy hover                            */
+  --brand-deep:  #122844;   /* darker navy for gradients & hero band */
+  --brand-ink:   #ffffff;   /* text on navy                          */
+  --gold:        #f5a623;   /* amber accent — single-use, deliberate */
+  --gold-2:      #ffb83d;   /* gold hover                            */
+  --gold-soft:   #fff2d6;   /* tinted fill for suggestion callouts   */
+  --gold-line:   #f3d28a;   /* gold border on hover-lifted cards     */
+  --gold-ink:    #6b4500;   /* text on gold-soft                     */
+
+  /* ─── Status tones (perceptually-calibrated via oklch) ──────────── */
+  --good: oklch(0.55 0.10 155);   /* ≈ #3f8757 */
+  --warn: oklch(0.68 0.13 75);    /* ≈ #c79332 */
+  --bad:  oklch(0.55 0.18 25);    /* ≈ #c84a36 */
+
+  /* ─── Type families ─────────────────────────────────────────────── */
+  /* Display: heavy uppercase moments — page H1, KPI numbers,
+     button labels, table headers, nav section labels. Letter-spacing
+     varies (.04 → .20em) based on size. Page H1 is 500 weight (NOT bold). */
+  --font-display: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  /* UI / body: everything that runs as prose, form labels, table cells. */
+  --font-ui:      "Manrope", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  /* Italic / descriptive "voice" — used sparingly. Class .h-italic.
+     Never UI. Never bold. */
+  --font-serif:   "Lora", "Source Serif Pro", "Times New Roman", serif;
+  /* Monospace: API tool names, IDs, masked credentials, timestamps. */
+  --font-mono:    "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* ─── Radii (small; we are not a rounded-corner brand) ──────────── */
+  --r-sm: 4px;
+  --r-md: 6px;
+  --r-lg: 10px;
+  --r-xl: 14px;
+
+  /* ─── Shadows (cool-tinted, layered, very soft) ─────────────────── */
+  --shadow-sm: 0 1px 0 rgba(14,23,38,.04), 0 1px 2px rgba(14,23,38,.05);
+  --shadow-md: 0 1px 0 rgba(14,23,38,.04), 0 4px 14px rgba(14,23,38,.07);
+  --shadow-lg: 0 1px 0 rgba(14,23,38,.04), 0 12px 32px rgba(14,23,38,.10);
+
+  /* ─── Layout constants ──────────────────────────────────────────── */
+  --rail-w: 220px;          /* nav rail width — drives top-bar wordmark align */
+}
+
+/* ─────────────────────────────────────────────────────────────────────
+ * Semantic type classes — drop in anywhere
+ * ───────────────────────────────────────────────────────────────────── */
+
+/* Body defaults */
+html, body{
+  background: var(--bg);
+  color: var(--ink);
+  font: 13.5px/1.5 var(--font-ui);
+  color-scheme: light;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Page eyebrow — small, gold-underlined, all-caps Montserrat 700.
+   Sits above every page H1, plus inside hero bands. */
+.eyebrow{
+  display: inline-flex; align-items: center; gap: 8px;
+  font: 700 10.5px/1 var(--font-display);
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--brand);
+}
+.eyebrow::before{ content:""; width: 18px; height: 2px; background: var(--gold); }
+.eyebrow.on-dark{ color: var(--gold); letter-spacing: .20em; }
+
+/* H1 — page title. 30px Montserrat 500 (NOT bold) UPPERCASE navy.
+   <em> inside renders gold; <span class="serif"> renders italic Lora gold. */
+h1, .h1{
+  margin: 0;
+  font: 500 30px/1.05 var(--font-display);
+  letter-spacing: .01em;
+  text-transform: uppercase;
+  color: var(--brand);
+}
+h1 em, .h1 em{ color: var(--gold); font-style: normal; font-weight: 500; }
+h1 .serif, .h1 .serif{
+  font: italic 400 0.85em/1 var(--font-serif);
+  text-transform: none; letter-spacing: 0;
+  color: var(--gold);
+  margin: 0 .15em;
+}
+
+/* H2 — section / card header. 14px UPPERCASE letter-spaced. */
+h2, .h2{
+  margin: 0;
+  font: 700 14px/1.2 var(--font-display);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--brand);
+}
+
+/* H3 — card title. 11px UPPERCASE. */
+h3, .h3{
+  margin: 0;
+  font: 700 11px/1 var(--font-display);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+/* Hero H1 — used inside .h-hero (navy band). 32px Montserrat 800. */
+.h-hero-title{
+  margin: 0;
+  font: 800 32px/1.05 var(--font-display);
+  letter-spacing: -.005em;
+  text-transform: uppercase;
+  color: var(--brand-ink);
+}
+.h-hero-title em{ color: var(--gold); font-style: normal; }
+.h-hero-title .serif{
+  font: italic 400 0.95em/1 var(--font-serif);
+  text-transform: none; letter-spacing: 0;
+  color: var(--gold);
+}
+
+/* Body / paragraph */
+p, .p{
+  margin: 0;
+  font: 400 13px/1.55 var(--font-ui);
+  color: var(--ink-2);
+}
+
+/* Sub — the under-title descriptor that almost every page header carries.
+   Often mixes a Lora italic clause with a bold count. */
+.sub{
+  font: 400 13px/1.55 var(--font-ui);
+  color: var(--ink-3);
+  max-width: 64ch;
+}
+.sub em, .h-italic{
+  font: italic 400 14px/1.55 var(--font-serif);
+  color: var(--ink-2);
+}
+
+/* Mono — API names, ids, emails, timestamps. Always 12px or smaller. */
+.mono, code, kbd{
+  font: 500 12px/1.4 var(--font-mono);
+  color: var(--ink-2);
+  letter-spacing: .01em;
+}
+
+/* Muted helper */
+.muted{ color: var(--muted); }
+
+/* KPI number — 30px Montserrat 800. (The dashboard uses a Lora-numeral
+   variant for a softer feel — see ui_kits for the alternate treatment.) */
+.kpi{
+  font: 800 30px/1.05 var(--font-display);
+  letter-spacing: -.01em;
+  color: var(--brand);
+}
+.kpi.gold{ color: var(--gold); }
+.kpi.serif{
+  font: 400 30px/1.05 var(--font-serif);
+  letter-spacing: -.02em;
+  color: var(--ink);
+}
+
+/* Selection — gold on navy. The brand showing through. */
+::selection{ background: var(--gold); color: var(--brand); }

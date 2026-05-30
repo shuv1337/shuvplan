@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="color-scheme" content="light only">
+<title>Connector tile</title>
+<link rel="stylesheet" href="../fonts/fonts.css">
+<link rel="stylesheet" href="../ui_kits/gateway/hifi.css">
+<style>
+  html,body{margin:0;background:#faf9f6;color-scheme:light;font:13.5px/1.5 "Manrope",system-ui;color:#0e1726;}
+  .card{ padding:24px 26px; display:flex; flex-direction:column; gap:18px; min-height:100%; box-sizing:border-box;}
+  .row{ display:flex; align-items:flex-end; gap:18px; flex-wrap:wrap;}
+  .grp{ display:flex; flex-direction:column; gap:8px; }
+  .lbl{ font:700 9.5px/1 "Montserrat",system-ui; letter-spacing:.14em; text-transform:uppercase; color:#6c7385;}
+</style>
+</head><body><div class="card">
+
+<div class="row">
+
+  <div class="grp" style="width:220px">
+    <div class="lbl">Large</div>
+    <div class="h-tile lg">
+      <div class="crown" data-pattern="lines" style="--_c:oklch(0.52 0.16 280)">
+        <span class="src-stat"><span class="h-dot" style="background:#7ee3a4;box-shadow:0 0 0 3px rgba(126,227,164,.25)"></span>good</span>
+        <span class="src-kind">MCP</span>
+        <img src="https://cdn.simpleicons.org/linear/FFFFFF" alt="" width="60" height="60" style="position:relative;z-index:1;display:block;filter:drop-shadow(0 1px 1px rgba(0,0,0,.18))">
+      </div>
+      <div class="meta">
+        <div><div class="name">Linear</div><div class="sub">14 tools · 12.4k/24h</div></div>
+        <span style="color:#a4abbc"><svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4l4 4-4 4"/></svg></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="grp" style="width:200px">
+    <div class="lbl">Regular</div>
+    <div class="h-tile">
+      <div class="crown" data-pattern="grid" style="--_c:oklch(0.55 0.14 250)">
+        <span class="src-stat"><span class="h-dot" style="background:#7ee3a4;box-shadow:0 0 0 3px rgba(126,227,164,.25)"></span>good</span>
+        <span class="src-kind">OpenAPI</span>
+        <img src="https://cdn.simpleicons.org/stripe/FFFFFF" alt="" width="42" height="42" style="position:relative;z-index:1;display:block;filter:drop-shadow(0 1px 1px rgba(0,0,0,.18))">
+      </div>
+      <div class="meta">
+        <div><div class="name">Stripe API</div><div class="sub">42 tools · 8.1k/24h</div></div>
+        <span style="color:#a4abbc"><svg width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4l4 4-4 4"/></svg></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="grp" style="width:180px">
+    <div class="lbl">Small</div>
+    <div class="h-tile sm">
+      <div class="crown" data-pattern="wave" style="--_c:oklch(0.42 0.10 235)">
+        <img src="https://cdn.simpleicons.org/postgresql/FFFFFF" alt="" width="32" height="32" style="position:relative;z-index:1;display:block;filter:drop-shadow(0 1px 1px rgba(0,0,0,.18))">
+      </div>
+      <div class="meta">
+        <div style="min-width:0;flex:1">
+          <div class="name">Postgres·prod</div>
+          <div class="sub">7 tools</div>
+          <div class="h-row" style="gap:6px;margin-top:7px">
+            <span class="h-tag warn" style="padding:3px 5px"><span class="h-dot warn" style="width:6px;height:6px;box-shadow:none"></span>warn</span>
+            <span class="h-tag" style="padding:3px 5px">Custom</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div style="font:italic 400 13px/1.4 'Lora',serif;color:#4a5468">Every source appears in one of three sizes across every page. Crown = vendor color + overlay pattern. Status pill top-left, kind chip top-right. Small variant moves both into the meta strip.</div>
+
+</div></body></html>

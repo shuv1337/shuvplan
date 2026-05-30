@@ -1,0 +1,48 @@
+/* fonts.css — local @font-face declarations.
+   Variable TTFs cover the full weight range we use.
+   Link this BEFORE colors_and_type.css if you want offline support. */
+
+@font-face{
+  font-family: "Montserrat";
+  src: url("Montserrat-VF.ttf") format("truetype-variations"),
+       url("Montserrat-VF.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face{
+  font-family: "Manrope";
+  src: url("Manrope-VF.ttf") format("truetype-variations"),
+       url("Manrope-VF.ttf") format("truetype");
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face{
+  font-family: "Lora";
+  src: url("Lora-VF.ttf") format("truetype-variations"),
+       url("Lora-VF.ttf") format("truetype");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face{
+  font-family: "Lora";
+  src: url("Lora-Italic-VF.ttf") format("truetype-variations"),
+       url("Lora-Italic-VF.ttf") format("truetype");
+  font-weight: 400 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face{
+  font-family: "Geist Mono";
+  src: url("GeistMono-VF.ttf") format("truetype-variations"),
+       url("GeistMono-VF.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}

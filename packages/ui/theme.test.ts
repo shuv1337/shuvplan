@@ -15,7 +15,7 @@ describe('shuvplan theme defaults', () => {
     expect(theme.builtIn).toBe(true);
     expect(theme.modeSupport).toBe('both');
     expect(theme.colors.light.background).toBe('#faf9f6');
-    expect(theme.colors.dark.background).toBe('#011627');
+    expect(theme.colors.dark.background).toBe('#0e1726');
   });
 
   it('uses shuvplan and system mode as provider defaults', () => {

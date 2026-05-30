@@ -1,0 +1,59 @@
+/* preview/_card.css — shared chrome for every Design System preview card.
+   Inherits all design tokens from ../colors_and_type.css.
+   Keep cards trim — show just the specimens, no titles. */
+
+@import url("../colors_and_type.css");
+
+html, body{
+  margin:0; padding:0;
+  background:#faf9f6;
+  color: var(--ink);
+  color-scheme: light;
+}
+
+.card{
+  padding: 22px 26px;
+  min-height: 100%;
+  box-sizing: border-box;
+  display: flex; flex-direction: column;
+  gap: 16px;
+}
+
+/* Common atomic helpers used inside cards only */
+.row{ display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
+.col{ display:flex; flex-direction:column; gap:10px; }
+.stack-tight{ display:flex; flex-direction:column; gap:4px; }
+.grid{ display:grid; gap:14px; }
+.spacer{ flex:1; }
+
+.swatch{
+  width: 56px; height: 56px;
+  border-radius: 10px;
+  border: 1px solid rgba(14,23,38,.06);
+  box-shadow: var(--shadow-sm);
+  position:relative;
+  flex: 0 0 56px;
+}
+.swatch.lg{ width:88px; height:88px; flex-basis:88px; }
+.swatch.sm{ width:36px; height:36px; flex-basis:36px; border-radius:6px; }
+
+.token{
+  font: 500 11px/1.2 var(--font-mono);
+  color: var(--ink-2);
+  letter-spacing: .01em;
+}
+.token .name{ color: var(--ink); font-weight: 600; }
+.token .hex{ color: var(--muted); }
+
+.label{
+  font: 700 9.5px/1 var(--font-display);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.divider{
+  height: 1px;
+  background: var(--line);
+  width: 100%;
+}

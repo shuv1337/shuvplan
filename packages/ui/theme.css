@@ -107,18 +107,18 @@ body {
   --font-serif: Georgia, serif;
 }
 
-/* Subtle grid background */
+/* Subtle grid background — theme-aware so warm/cool tones track the active palette */
 .bg-grid {
   background-image:
-    linear-gradient(to right, oklch(0.32 0.02 260 / 0.5) 1px, transparent 1px),
-    linear-gradient(to bottom, oklch(0.32 0.02 260 / 0.5) 1px, transparent 1px);
+    linear-gradient(to right, color-mix(in oklab, var(--border) 55%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklab, var(--border) 55%, transparent) 1px, transparent 1px);
   background-size: 24px 24px;
 }
 
 .light .bg-grid {
   background-image:
-    linear-gradient(to right, oklch(0.90 0.01 260 / 0.6) 1px, transparent 1px),
-    linear-gradient(to bottom, oklch(0.90 0.01 260 / 0.6) 1px, transparent 1px);
+    linear-gradient(to right, color-mix(in oklab, var(--border) 60%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklab, var(--border) 60%, transparent) 1px, transparent 1px);
 }
 
 
