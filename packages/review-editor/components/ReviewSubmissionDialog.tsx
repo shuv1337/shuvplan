@@ -360,7 +360,7 @@ export function ReviewSubmissionDialog({
               isSubmitting || (!hasTargets && !isApprove && !generalComment.trim()) || allSucceeded
                 ? 'opacity-50 cursor-not-allowed bg-muted text-muted-foreground'
                 : isApprove
-                  ? 'bg-success text-success-foreground hover:opacity-90'
+                  ? 'bg-accent text-accent-foreground hover:opacity-90'
                   : 'bg-primary text-primary-foreground hover:opacity-90'
             }`}
           >

@@ -1,5 +1,7 @@
 /* shuvplan Theme System — imports all themes, provides Tailwind bridge + base styles */
 
+@import "./fonts/fonts.css";
+
 /* Theme files — each defines .theme-{name} (dark) and .theme-{name}.light */
 @import "./themes/shuvplan.css";
 @import "./themes/plannotator.css";
@@ -119,6 +121,18 @@ body {
   background-image:
     linear-gradient(to right, color-mix(in oklab, var(--border) 60%, transparent) 1px, transparent 1px),
     linear-gradient(to bottom, color-mix(in oklab, var(--border) 60%, transparent) 1px, transparent 1px);
+}
+
+.theme-shuvplan .bg-grid,
+.theme-plannotator .bg-grid {
+  background-color: color-mix(in oklab, var(--background) 92%, var(--card) 8%);
+  background-image: none;
+}
+
+.theme-shuvplan.light .bg-grid,
+.theme-plannotator.light .bg-grid {
+  background-color: color-mix(in oklab, var(--background) 88%, var(--secondary) 12%);
+  background-image: none;
 }
 
 

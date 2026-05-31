@@ -71,7 +71,7 @@ export const ApproveDropdown: React.FC<ApproveDropdownProps> = ({
 
   const baseClasses = disabled
     ? 'opacity-50 cursor-not-allowed bg-muted text-muted-foreground'
-    : 'bg-success text-success-foreground hover:opacity-90';
+    : 'bg-accent text-accent-foreground hover:opacity-90';
 
   const handleApproveClick = () => {
     setIsOpen(false);
@@ -110,7 +110,7 @@ export const ApproveDropdown: React.FC<ApproveDropdownProps> = ({
         <button
           onClick={() => setIsOpen(!isOpen)}
           disabled={disabled}
-          className={`px-1.5 py-1 rounded-r-md border-l border-success-foreground/20 text-xs transition-all ${baseClasses}`}
+          className={`px-1.5 py-1 rounded-r-md border-l border-accent-foreground/20 text-xs transition-all ${baseClasses}`}
         >
           <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />

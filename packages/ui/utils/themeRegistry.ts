@@ -44,12 +44,25 @@ export const BUILT_IN_THEMES: ThemeInfo[] = [
   },
   {
     id: 'plannotator',
-    name: 'Plannotator Classic',
+    name: 'Plannotator',
     builtIn: true,
     modeSupport: 'both',
+    syntaxHighlighting: true,
     colors: {
-      dark: { primary: 'oklch(0.75 0.18 280)', secondary: 'oklch(0.65 0.15 180)', accent: 'oklch(0.70 0.20 60)', background: 'oklch(0.15 0.02 260)', foreground: 'oklch(0.90 0.01 260)' },
-      light: { primary: 'oklch(0.50 0.25 280)', secondary: 'oklch(0.50 0.18 180)', accent: 'oklch(0.60 0.22 50)', background: 'oklch(0.97 0.005 260)', foreground: 'oklch(0.18 0.02 260)' },
+      dark: {
+        primary: '#f5a623',
+        secondary: '#1e3a5f',
+        accent: '#f5a623',
+        background: '#0e1726',
+        foreground: '#d6deeb',
+      },
+      light: {
+        primary: '#1e3a5f',
+        secondary: '#f1eee6',
+        accent: '#f5a623',
+        background: '#faf9f6',
+        foreground: '#0e1726',
+      },
     },
   },
   {

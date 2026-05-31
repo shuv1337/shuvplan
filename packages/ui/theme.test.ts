@@ -28,6 +28,14 @@ describe('shuvplan theme defaults', () => {
     expect(resolveThemeClasses('shuvplan', 'dark')).toBe('theme-shuvplan');
   });
 
+  it('keeps the legacy plannotator theme id on the Latitudes palette', () => {
+    const theme = BUILT_IN_THEMES.find(t => t.id === 'plannotator');
+
+    expect(theme?.colors.light.background).toBe('#faf9f6');
+    expect(theme?.colors.dark.background).toBe('#0e1726');
+    expect(theme?.colors.light.primary).toBe('#1e3a5f');
+  });
+
   it('keeps legacy light-only and dark-only theme mode locking', () => {
     expect(resolveThemeClasses('one-light', 'dark')).toBe('theme-one-light light');
     expect(resolveThemeClasses('night-owl', 'light')).toBe('theme-night-owl');

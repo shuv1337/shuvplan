@@ -83,8 +83,8 @@ export const ApproveButton: React.FC<ApproveButtonProps> = ({
         : disabled
           ? 'opacity-50 cursor-not-allowed bg-muted text-muted-foreground'
           : dimmed
-            ? 'bg-success/50 text-success-foreground/70 hover:bg-success hover:text-success-foreground'
-            : 'bg-success text-success-foreground hover:opacity-90'
+            ? 'bg-accent/45 text-accent-foreground/70 hover:bg-accent hover:text-accent-foreground'
+            : 'bg-accent text-accent-foreground hover:opacity-90'
     }`}
     title={title}
   >

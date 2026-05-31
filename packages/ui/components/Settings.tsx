@@ -93,6 +93,7 @@ interface SettingsProps {
 
 const DIFF_FONT_OPTIONS = [
   { value: '', label: 'Theme Default' },
+  { value: 'Geist Mono', label: 'Geist Mono' },
   { value: 'Fira Code', label: 'Fira Code' },
   { value: 'Hack', label: 'Hack' },
   { value: 'IBM Plex Mono', label: 'IBM Plex Mono' },
