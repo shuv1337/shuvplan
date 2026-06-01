@@ -2,6 +2,7 @@ import { describe, expect, it } from 'bun:test';
 import {
   DEFAULT_COLOR_THEME,
   DEFAULT_THEME_MODE,
+  resolveInitialColorTheme,
   resolveThemeClasses,
 } from './components/ThemeProvider';
 import { BUILT_IN_THEMES } from './utils/themeRegistry';
@@ -39,5 +40,12 @@ describe('shuvplan theme defaults', () => {
   it('keeps legacy light-only and dark-only theme mode locking', () => {
     expect(resolveThemeClasses('one-light', 'dark')).toBe('theme-one-light light');
     expect(resolveThemeClasses('night-owl', 'light')).toBe('theme-night-owl');
+  });
+
+  it('migrates stale saved color themes to shuvplan once for the design-system default', () => {
+    expect(resolveInitialColorTheme('aurora-x', 'shuvplan', false)).toBe('shuvplan');
+    expect(resolveInitialColorTheme('aurora-x', 'shuvplan', true)).toBe('aurora-x');
+    expect(resolveInitialColorTheme('plannotator', 'shuvplan', false)).toBe('plannotator');
+    expect(resolveInitialColorTheme(null, 'shuvplan', false)).toBe('shuvplan');
   });
 });

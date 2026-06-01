@@ -5,6 +5,7 @@ import { BUILT_IN_THEMES, type ThemeInfo } from '../utils/themeRegistry';
 export type Mode = 'dark' | 'light' | 'system';
 export const DEFAULT_THEME_MODE: Mode = 'system';
 export const DEFAULT_COLOR_THEME = 'shuvplan';
+export const DESIGN_SYSTEM_THEME_MIGRATION_KEY = 'plannotator-design-system-theme-migrated-v1';
 
 type ThemeProviderState = {
   // Mode (dark/light/system) — backward-compatible with old "theme" API
@@ -40,6 +41,24 @@ export function resolveThemeClasses(themeId: string, effectiveMode: 'dark' | 'li
   if (modeSupport === 'light-only') applyLight = true;
 
   return `theme-${themeId}${applyLight ? ' light' : ''}`;
+}
+
+export function resolveInitialColorTheme(
+  storedColorTheme: string | null,
+  defaultColorTheme: string,
+  designSystemMigrationApplied: boolean
+): string {
+  if (
+    defaultColorTheme === DEFAULT_COLOR_THEME &&
+    !designSystemMigrationApplied &&
+    storedColorTheme &&
+    storedColorTheme !== DEFAULT_COLOR_THEME &&
+    storedColorTheme !== 'plannotator'
+  ) {
+    return DEFAULT_COLOR_THEME;
+  }
+
+  return storedColorTheme || defaultColorTheme;
 }
 
 /** Sync theme classes on <html> without stripping non-theme classes (e.g. transitions-ready). */
@@ -84,7 +103,24 @@ export function ThemeProvider({
   );
 
   const [colorTheme, setColorThemeState] = useState<string>(
-    () => storage.getItem(colorThemeStorageKey) || defaultColorTheme
+    () => {
+      const storedColorTheme = storage.getItem(colorThemeStorageKey);
+      const migrationApplied = storage.getItem(DESIGN_SYSTEM_THEME_MIGRATION_KEY) === '1';
+      const initialColorTheme = resolveInitialColorTheme(
+        storedColorTheme,
+        defaultColorTheme,
+        migrationApplied
+      );
+
+      if (defaultColorTheme === DEFAULT_COLOR_THEME && !migrationApplied) {
+        storage.setItem(DESIGN_SYSTEM_THEME_MIGRATION_KEY, '1');
+        if (initialColorTheme !== storedColorTheme) {
+          storage.setItem(colorThemeStorageKey, initialColorTheme);
+        }
+      }
+
+      return initialColorTheme;
+    }
   );
 
   const [systemIsLight, setSystemIsLight] = useState(getSystemIsLight);

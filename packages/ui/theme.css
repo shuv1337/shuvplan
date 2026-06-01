@@ -123,12 +123,14 @@ body {
     linear-gradient(to bottom, color-mix(in oklab, var(--border) 60%, transparent) 1px, transparent 1px);
 }
 
+:is(.theme-shuvplan, .theme-plannotator).bg-grid,
 .theme-shuvplan .bg-grid,
 .theme-plannotator .bg-grid {
   background-color: color-mix(in oklab, var(--background) 92%, var(--card) 8%);
   background-image: none;
 }
 
+:is(.theme-shuvplan, .theme-plannotator).light.bg-grid,
 .theme-shuvplan.light .bg-grid,
 .theme-plannotator.light .bg-grid {
   background-color: color-mix(in oklab, var(--background) 88%, var(--secondary) 12%);
