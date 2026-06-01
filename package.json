@@ -1,6 +1,6 @@
 {
   "name": "plannotator",
-  "version": "0.19.23",
+  "version": "0.19.26",
   "private": true,
   "description": "shuvplan: interactive plan and code review for AI coding agents, with Plannotator compatibility aliases",
   "author": "backnotprop",

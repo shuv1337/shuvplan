@@ -1356,7 +1356,7 @@ export const Settings: React.FC<SettingsProps> = ({ taterMode, onTaterModeChange
                             type="text"
                             value={planSave.customPath || ''}
                             onChange={(e) => handlePlanSaveChange({ customPath: e.target.value || null })}
-                            placeholder="~/.shuvplan/plans/"
+                            placeholder="Leave empty for default"
                             className="w-full px-3 py-2 bg-muted rounded-lg text-xs font-mono placeholder:text-muted-foreground/50 focus:outline-none focus:ring-1 focus:ring-primary/50"
                           />
                           <div className="text-[10px] text-muted-foreground/70">
@@ -1472,8 +1472,8 @@ export const Settings: React.FC<SettingsProps> = ({ taterMode, onTaterModeChange
 
                     <style>{`
                       @keyframes tip-slide-open {
-                        from { max-height: 0; opacity: 0; }
-                        to   { max-height: 60px; opacity: 1; }
+                        from { opacity: 0; transform: translateY(-4px); }
+                        to   { opacity: 1; transform: translateY(0); }
                       }
                     `}</style>
                     <div className="space-y-1.5">

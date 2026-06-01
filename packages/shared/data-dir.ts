@@ -1,14 +1,18 @@
 /**
  * shuvplan data directory resolution.
  *
- * New writes go to ~/.shuvplan. Reads prefer ~/.shuvplan and fall back to
- * ~/.plannotator when the new path does not exist, preserving existing installs
- * through the compatibility window.
+ * Priority:
+ *   1. SHUVPLAN_DATA_DIR / PLANNOTATOR_DATA_DIR environment variable
+ *   2. Default writes: ~/.shuvplan
+ *   3. Default reads: ~/.shuvplan, falling back to ~/.plannotator
+ *
+ * The env override mirrors upstream PLANNOTATOR_DATA_DIR while keeping the
+ * fork's compatibility window for existing local data.
  */
 
 import { existsSync, mkdirSync } from "fs";
 import { homedir } from "os";
-import { dirname, join } from "path";
+import { dirname, join, resolve } from "path";
 
 export const DATA_DIR_NAME = ".shuvplan";
 export const LEGACY_DATA_DIR_NAME = ".plannotator";
@@ -17,13 +21,30 @@ function currentHomeDir(): string {
   return process.env.HOME || process.env.USERPROFILE || homedir();
 }
 
+function expandDataDir(raw: string): string {
+  const home = currentHomeDir();
+  if (raw === "~") return home;
+  if (raw.startsWith("~/") || raw.startsWith("~\\")) {
+    return join(home, raw.slice(2));
+  }
+  return resolve(raw);
+}
+
+export function getPlannotatorDataDir(): string {
+  return getDataRootForWrite();
+}
+
 export function getDataRootForWrite(): string {
-  const dir = join(currentHomeDir(), DATA_DIR_NAME);
+  const envDir = process.env.SHUVPLAN_DATA_DIR?.trim() || process.env.PLANNOTATOR_DATA_DIR?.trim();
+  const dir = envDir ? expandDataDir(envDir) : join(currentHomeDir(), DATA_DIR_NAME);
   mkdirSync(dir, { recursive: true });
   return dir;
 }
 
 export function getDataRootForRead(): string {
+  const envDir = process.env.SHUVPLAN_DATA_DIR?.trim() || process.env.PLANNOTATOR_DATA_DIR?.trim();
+  if (envDir) return expandDataDir(envDir);
+
   const next = join(currentHomeDir(), DATA_DIR_NAME);
   if (existsSync(next)) return next;
 
@@ -42,6 +63,9 @@ export function getDataDirForWrite(...segments: string[]): string {
 }
 
 export function getDataDirForRead(...segments: string[]): string {
+  const envDir = process.env.SHUVPLAN_DATA_DIR?.trim() || process.env.PLANNOTATOR_DATA_DIR?.trim();
+  if (envDir) return join(expandDataDir(envDir), ...segments);
+
   const next = join(currentHomeDir(), DATA_DIR_NAME, ...segments);
   if (existsSync(next)) return next;
 
@@ -56,6 +80,9 @@ export function getDataPathForWrite(...segments: string[]): string {
 }
 
 export function getDataPathForRead(...segments: string[]): string {
+  const envDir = process.env.SHUVPLAN_DATA_DIR?.trim() || process.env.PLANNOTATOR_DATA_DIR?.trim();
+  if (envDir) return join(expandDataDir(envDir), ...segments);
+
   const next = join(currentHomeDir(), DATA_DIR_NAME, ...segments);
   if (existsSync(next)) return next;
 

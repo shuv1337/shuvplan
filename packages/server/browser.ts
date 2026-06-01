@@ -4,6 +4,7 @@
 
 import { $ } from "bun";
 import os from "node:os";
+import path from "node:path";
 import fs from "node:fs";
 import { getPublicEnvValue } from "./env";
 import { getDataPathForRead } from "@plannotator/shared/data-dir";

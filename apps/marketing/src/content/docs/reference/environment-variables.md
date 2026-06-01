@@ -16,10 +16,15 @@ All shuvplan environment variables and their defaults. Legacy `PLANNOTATOR_*` na
 | `SHUVPLAN_PORT` | random (local) / `19432` (remote) | Fixed server port. When not set, local sessions use a random port; remote sessions default to `19432`. |
 | `SHUVPLAN_BROWSER` | system default | Custom browser to open the UI in. macOS: app name or path. Linux/Windows: executable path. Can also be a script. Takes priority over `BROWSER`. Also settable per-invocation with `--browser`. |
 | `BROWSER` | (none) | Standard env var for specifying a browser. VS Code sets this automatically in devcontainers. Used as fallback when `SHUVPLAN_BROWSER` is not set. |
-| `SHUVPLAN_ORIGIN` | auto-detect | Explicit agent-origin override. Valid values: `claude-code`, `opencode`, `codex`, `copilot-cli`, `gemini-cli`, `pi`. Invalid values silently fall through to env-based detection. |
+| `SHUVPLAN_ORIGIN` | auto-detect | Explicit agent-origin override. Valid values: `claude-code`, `amp`, `droid`, `opencode`, `codex`, `copilot-cli`, `gemini-cli`, `pi`. Invalid values silently fall through to env-based detection. |
+| `SHUVPLAN_READY_FILE` | (none) | Internal host-plugin side channel. When set, shuvplan appends server-ready JSON lines containing the local UI URL. |
+| `SHUVPLAN_SKIP_BROWSER_OPEN` | unset | Internal host-plugin flag. Set to `1` to prevent shuvplan from opening the browser itself when the host will open the URL. |
 | `SHUVPLAN_SHARE` | enabled | Set to `disabled` to turn off sharing. Hides share UI and import options. |
 | `SHUVPLAN_SHARE_URL` | current hosted compatibility portal | Base URL for share links. Set this to `https://plan.shuv.dev` for the shuvplan-hosted portal after deployment smoke passes, or to your own portal when self-hosting. |
+| `SHUVPLAN_DATA_DIR` | `~/.shuvplan` | Override the base data directory. Supports `~` expansion. All data (plans, history, drafts, config, hooks, sessions) is stored under this directory. Legacy `PLANNOTATOR_DATA_DIR` is also supported. |
 | `SHUVPLAN_PLAN_TIMEOUT_SECONDS` | `345600` | OpenCode only. `submit_plan` wait timeout in seconds. Set `0` to disable timeout. |
+
+If you use the VS Code extension, make sure `SHUVPLAN_DATA_DIR` or `PLANNOTATOR_DATA_DIR` is visible to both your terminal and VS Code. On macOS, apps launched from the Dock don't inherit shell env vars — launch VS Code from the terminal (`code .`) or set the variable via `launchctl setenv`.
 
 ## Annotation variables
 

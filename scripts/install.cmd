@@ -160,7 +160,17 @@ REM provenance support. Precedence: CLI flag > env var > new config.json > legac
 set "VERIFY_ATTESTATION=0"
 
 REM Layer 3: config file (lowest precedence of the opt-in sources).
-set "VERIFY_CONFIG=%USERPROFILE%\.shuvplan\config.json"
+if defined SHUVPLAN_DATA_DIR (
+    set "_CONFIG_DIR=!SHUVPLAN_DATA_DIR!"
+) else if defined PLANNOTATOR_DATA_DIR (
+    set "_CONFIG_DIR=!PLANNOTATOR_DATA_DIR!"
+) else (
+    set "_CONFIG_DIR=%USERPROFILE%\.shuvplan"
+)
+if /i "!_CONFIG_DIR!"=="~" set "_CONFIG_DIR=%USERPROFILE%"
+if "!_CONFIG_DIR:~0,2!"=="~\" set "_CONFIG_DIR=%USERPROFILE%\!_CONFIG_DIR:~2!"
+if "!_CONFIG_DIR:~0,2!"=="~/" set "_CONFIG_DIR=%USERPROFILE%\!_CONFIG_DIR:~2!"
+set "VERIFY_CONFIG=!_CONFIG_DIR!\config.json"
 if not exist "!VERIFY_CONFIG!" if exist "%USERPROFILE%\.plannotator\config.json" set "VERIFY_CONFIG=%USERPROFILE%\.plannotator\config.json"
 if exist "!VERIFY_CONFIG!" (
     findstr /r /c:"\"verifyAttestation\"[ 	]*:[ 	]*true" "!VERIFY_CONFIG!" >nul 2>&1

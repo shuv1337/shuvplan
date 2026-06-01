@@ -79,6 +79,7 @@ describe("getPlanDir", () => {
   test("uses default when no custom path", () => {
     const result = getPlanDir();
     expect(result).toMatch(/\.shuvplan\/plans$/);
+    expect(result).toBe(getPlanDir(null));
   });
 
   test("uses default for null", () => {

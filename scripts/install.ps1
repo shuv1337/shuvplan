@@ -95,7 +95,13 @@ Write-Host "Installing plannotator $latestTag..."
 $verifyAttestationResolved = $false
 
 # Layer 3: config file (lowest precedence of the opt-in sources).
-$configPath = "$env:USERPROFILE\.shuvplan\config.json"
+$configDir = if ($env:SHUVPLAN_DATA_DIR) { $env:SHUVPLAN_DATA_DIR.Trim() } elseif ($env:PLANNOTATOR_DATA_DIR) { $env:PLANNOTATOR_DATA_DIR.Trim() } else { Join-Path $env:USERPROFILE ".shuvplan" }
+if ($configDir -eq "~") {
+    $configDir = $env:USERPROFILE
+} elseif ($configDir.StartsWith("~/") -or $configDir.StartsWith('~\')) {
+    $configDir = Join-Path $env:USERPROFILE ($configDir.Substring(2))
+}
+$configPath = Join-Path $configDir "config.json"
 $legacyConfigPath = "$env:USERPROFILE\.plannotator\config.json"
 if (-not (Test-Path $configPath) -and (Test-Path $legacyConfigPath)) {
     $configPath = $legacyConfigPath

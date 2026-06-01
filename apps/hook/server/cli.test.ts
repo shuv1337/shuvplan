@@ -23,6 +23,7 @@ describe("CLI top-level help", () => {
     expect(output).toContain("shuvplan [--browser <name>]");
     expect(output).toContain("shuvplan review [--git] [PR_URL]");
     expect(output).toContain("shuvplan annotate <file.md | file.html | https://... | folder/>");
+    expect(output).toContain("shuvplan annotate-last [--stdin]");
     expect(output).toContain("shuvplan setup-goal <interview|facts>");
     expect(output).toContain("shuvplan submissions [--last] [--limit N]");
     expect(output).toContain("legacy 'plannotator' commands remain available");

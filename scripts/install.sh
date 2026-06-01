@@ -193,7 +193,15 @@ verify_attestation=0
 # Layer 3: config file (lowest precedence of the opt-in sources).
 # Crude grep against a flat boolean — PlannotatorConfig has no nested
 # verifyAttestation, so false positives are not a concern.
-config_path="$HOME/.shuvplan/config.json"
+# Resolve the data directory, expanding ~ the same way the runtime does.
+_raw_dir="${SHUVPLAN_DATA_DIR:-${PLANNOTATOR_DATA_DIR:-}}"
+case "$_raw_dir" in
+    "")      _config_dir="$HOME/.shuvplan" ;;
+    "~")     _config_dir="$HOME" ;;
+    "~/"*)   _config_dir="$HOME/${_raw_dir#\~/}" ;;
+    *)       _config_dir="$_raw_dir" ;;
+esac
+config_path="$_config_dir/config.json"
 legacy_config_path="$HOME/.plannotator/config.json"
 if [ ! -f "$config_path" ] && [ -f "$legacy_config_path" ]; then
     config_path="$legacy_config_path"

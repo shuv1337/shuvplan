@@ -18,6 +18,13 @@ plannotator/
 │   │   ├── index.ts              # Plugin entry with submit_plan tool + review/annotate event handlers
 │   │   ├── plannotator.html      # Built plan review app
 │   │   └── review-editor.html    # Built code review app
+│   ├── amp-plugin/               # Amp plugin
+│   │   ├── plannotator.ts        # Native Amp command-palette integration
+│   │   └── README.md             # Install and local development notes
+│   ├── droid-plugin/             # Droid plugin
+│   │   ├── .factory-plugin/plugin.json
+│   │   ├── commands/             # Slash command entrypoints
+│   │   └── lib/                  # Shared command wrapper helpers
 │   ├── marketing/                # Marketing site, docs, and blog (plannotator.ai)
 │   │   └── astro.config.mjs      # Astro 5 static site with content collections
 │   ├── paste-service/            # Paste service for short URL sharing
@@ -121,9 +128,10 @@ claude --plugin-dir ./apps/hook
 | `PLANNOTATOR_SHARE` | Set to `disabled` to turn off URL sharing entirely. Default: enabled. |
 | `PLANNOTATOR_SHARE_URL` | Custom base URL for share links (self-hosted portal). Default: `https://share.plannotator.ai`. |
 | `PLANNOTATOR_PASTE_URL` | Base URL of the paste service API for short URL sharing. Default: `https://plannotator-paste.plannotator.workers.dev`. |
-| `PLANNOTATOR_ORIGIN` | Explicit agent-origin override at the top of the detection chain. Valid values: `claude-code`, `opencode`, `codex`, `copilot-cli`, `gemini-cli`, `pi`. Invalid values silently fall through to env-based detection. Unset by default. When a pi coding-agent shells out to the CLI, `pi` is also auto-detected from `PI_CODING_AGENT=true`. |
+| `PLANNOTATOR_ORIGIN` | Explicit agent-origin override at the top of the detection chain. Valid values: `claude-code`, `amp`, `droid`, `opencode`, `codex`, `copilot-cli`, `gemini-cli`, `pi`. Invalid values silently fall through to env-based detection. Unset by default. When a pi coding-agent shells out to the CLI, `pi` is also auto-detected from `PI_CODING_AGENT=true`. |
 | `PLANNOTATOR_JINA` | Set to `0` / `false` to disable Jina Reader for URL annotation, or `1` / `true` to enable. Default: enabled. Can also be set via `~/.plannotator/config.json` (`{ "jina": false }`) or per-invocation via `--no-jina`. |
 | `JINA_API_KEY` | Optional Jina Reader API key for higher rate limits (500 RPM vs 20 RPM unauthenticated). Free keys include 10M tokens. |
+| `PLANNOTATOR_DATA_DIR` | Override the base data directory. Supports `~` expansion. Default: `~/.plannotator`. All data (plans, history, drafts, config, hooks, sessions, debug logs, IPC registry) is stored under this directory. |
 | `PLANNOTATOR_VERIFY_ATTESTATION` | **Read by the install scripts only**, not by the runtime binary. Set to `1` / `true` to have `scripts/install.sh` / `install.ps1` / `install.cmd` run `gh attestation verify` on every install. Off by default. Can also be set persistently via `~/.plannotator/config.json` (`{ "verifyAttestation": true }`) or per-invocation via `--verify-attestation`. Requires `gh` installed and authenticated. |
 
 **Config-only settings (`~/.plannotator/config.json`)**: Some settings have no env-var equivalent and are toggled by editing the config file directly:
@@ -180,6 +188,8 @@ Ask AI providers are detected independently from installed/authenticated local C
 | Origin | Preferred Ask AI provider |
 |--------|---------------------------|
 | `claude-code` | `claude-agent-sdk` |
+| `amp` | no dedicated provider; fallback to saved/server default |
+| `droid` | no dedicated provider; fallback to saved/server default |
 | `codex` | `codex-sdk` |
 | `opencode` | `opencode-sdk` |
 | `pi` | `pi-sdk` |

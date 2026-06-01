@@ -7,11 +7,25 @@ import { createCookieProxy } from "./cookie-proxy";
 import { PanelManager } from "./panel-manager";
 import { setActiveProxyPort, registerEditorAnnotationCommand } from "./editor-annotations";
 
+function configuredDataDir(): string | null {
+  const raw = process.env.SHUVPLAN_DATA_DIR?.trim() || process.env.PLANNOTATOR_DATA_DIR?.trim();
+  if (!raw) return null;
+  if (raw === "~") return os.homedir();
+  if (raw.startsWith("~/") || raw.startsWith("~\\")) {
+    return path.join(os.homedir(), raw.slice(2));
+  }
+  return path.resolve(raw);
+}
+
 function dataPathForWrite(...segments: string[]): string {
+  const configured = configuredDataDir();
+  if (configured) return path.join(configured, ...segments);
   return path.join(os.homedir(), ".shuvplan", ...segments);
 }
 
 function dataPathForRead(...segments: string[]): string {
+  const configured = configuredDataDir();
+  if (configured) return path.join(configured, ...segments);
   const next = dataPathForWrite(...segments);
   if (fs.existsSync(next)) return next;
   const legacy = path.join(os.homedir(), ".plannotator", ...segments);

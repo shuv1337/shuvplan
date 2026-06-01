@@ -17,24 +17,23 @@
  * - Same trust model as ~/.shuvplan/config.json
  */
 
-import { homedir } from "os";
 import { join } from "path";
 import { readFileSync, statSync } from "fs";
-import { DATA_DIR_NAME, LEGACY_DATA_DIR_NAME } from "./data-dir";
+import { getDataDirForRead, getDataRootForRead, getDataRootForWrite, getLegacyDataRoot } from "./data-dir";
 
 /** Base directory for hook-injectable files (new path) */
 function getHooksBaseDir(): string {
-  return join(homedir(), DATA_DIR_NAME, "hooks");
+  return join(getDataRootForWrite(), "hooks");
 }
 
 /** Legacy hooks directory (previous new path) */
 function getLegacyHooksBaseDir(): string {
-  return join(homedir(), LEGACY_DATA_DIR_NAME, "hooks");
+  return join(getLegacyDataRoot(), "hooks");
 }
 
 /** Legacy base directory (pre-migration path) */
 function getLegacyBaseDir(): string {
-  return join(homedir(), LEGACY_DATA_DIR_NAME);
+  return getLegacyDataRoot();
 }
 
 /** Maximum file size to read (50 KB) */
