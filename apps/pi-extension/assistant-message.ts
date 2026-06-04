@@ -1,4 +1,4 @@
-import type { ExtensionContext } from "@mariozechner/pi-coding-agent";
+import type { ExtensionContext } from "@shuv1337/pi-coding-agent";
 
 type AssistantTextBlock = { type?: string; text?: string };
 

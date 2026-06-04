@@ -19,14 +19,14 @@
 
 import { existsSync, readFileSync, statSync } from "node:fs";
 import { basename, resolve } from "node:path";
-import type { ThinkingLevel } from "@mariozechner/pi-agent-core";
-import { Type } from "@mariozechner/pi-ai";
+import type { ThinkingLevel } from "@shuv1337/pi-agent-core";
+import { Type } from "@shuv1337/pi-ai";
 import type {
 	ExtensionAPI,
 	ExtensionCommandContext,
 	ExtensionContext,
-} from "@mariozechner/pi-coding-agent";
-import { Key } from "@mariozechner/pi-tui";
+} from "@shuv1337/pi-coding-agent";
+import { Key } from "@shuv1337/pi-tui";
 import { buildPromptVariables, formatTodoList, loadPlannotatorConfig, renderTemplate, resolvePhaseProfile } from "./config.js";
 import {
 	type ChecklistItem,

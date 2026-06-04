@@ -46,12 +46,12 @@
     "@joplin/turndown-plugin-gfm": "^1.0.64"
   },
   "peerDependencies": {
-    "@mariozechner/pi-coding-agent": ">=0.75.4"
+    "@shuv1337/pi-coding-agent": ">=0.75.4"
   },
   "devDependencies": {
-    "@mariozechner/pi-coding-agent": "workspace:*",
-    "@mariozechner/pi-agent-core": "workspace:*",
-    "@mariozechner/pi-ai": "workspace:*",
-    "@mariozechner/pi-tui": "workspace:*"
+    "@shuv1337/pi-coding-agent": "workspace:*",
+    "@shuv1337/pi-agent-core": "workspace:*",
+    "@shuv1337/pi-ai": "workspace:*",
+    "@shuv1337/pi-tui": "workspace:*"
   }
 }
